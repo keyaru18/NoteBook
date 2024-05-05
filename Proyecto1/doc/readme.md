@@ -8,7 +8,7 @@
 - WINDOW: CTRL + SHIFT + P
 - WINDOW: CTRL + P
 - WINDOW: CTRL + B
-- WINDOW: SHIFT + ALT + UP OR SHIFT + ALT + DOWN 
+- WINDOW: SHIFT + ALT + UP OR touch SHIFT + ALT + DOWN 
 
 ## **Observaciones**
 - Luego de dar click en un archivo se puede cambiar el nombre con "F2".
