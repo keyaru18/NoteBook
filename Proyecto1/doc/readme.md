@@ -1,4 +1,4 @@
-# Class01 : 30 de abrl
+# Class02 : 30 de Abrl
 
 ## Comando de Linux
 - pwd : Lugar actual
@@ -13,7 +13,7 @@
 ## **Observaciones**
 - Luego de dar click en un archivo se puede cambiar el nombre con "F2".
 
-### Class03
+# Class03: 1 de May
 - **git**
 - markdown
 
@@ -34,3 +34,7 @@ Link
 [buscador google](https://google.com)
 
 ![Captura de Imagen](img01.png)
+
+# Class04: 6 de May
+
+
