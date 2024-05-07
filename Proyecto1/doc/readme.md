@@ -41,3 +41,6 @@ Link
  - El compilador y el interprete generan el código de máquina que esta diseñado para correr en el sistema operativo.
  - Ellos dejaron un código intermedio, es decir se utiliza el mismo compilador pero deja un **bytecode** (en java es un punto class). Sobre los sistemas operativos se instala el famoso SDK (hay para cada versión) y Las compilaciones generan un .class que se empaquetan. Luego con toma el código de máquina para distribuirlo a cada sistema operativo.
  - Ese mismo principio se utilizó para los dispositivos móviles.
+
+# Class05: 7 de May 
+si
