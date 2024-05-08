@@ -1,5 +1,20 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+       //declarar
+        BucleFor bf;
+        BucleWhile bw;
+
+        //instanciar
+        bf = new BucleFor();
+        bw = new BucleWhile();
+
+        //llamar al metodo
+        bf.signoAlterno();
+        bf.signoAlternoGenerativo();
+        bf.signoAlternoGenerativoMe();
+        bf.escalera();
+        bw.signoAlterno();
+        bw.signoAlternoGenerativoMe();
     }
+    
 }
