@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="xBvWMSsdF1iIkybvaqNX" name="Página-1">
-        <mxGraphModel dx="787" dy="1520" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="390" dy="1776" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -14,7 +14,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="_y9HMlbtK-9sQ7ykB1Rd" name="Página-2">
-        <mxGraphModel dx="787" dy="351" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="390" dy="607" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -54,16 +54,19 @@
                     <mxGeometry x="55.5" y="53" width="651" height="276" as="geometry"/>
                 </mxCell>
                 <mxCell id="8RfrB9Oa0-xRCQ15_VHS-16" value="Usuario" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;" parent="1" vertex="1">
-                    <mxGeometry x="55.5" y="392" width="202.5" height="181" as="geometry"/>
+                    <mxGeometry x="55.5" y="392" width="202.5" height="207" as="geometry"/>
                 </mxCell>
                 <mxCell id="8RfrB9Oa0-xRCQ15_VHS-17" value="+ name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="8RfrB9Oa0-xRCQ15_VHS-16" vertex="1">
                     <mxGeometry y="26" width="202.5" height="26" as="geometry"/>
                 </mxCell>
+                <mxCell id="ISV4XSq0a1v9Cc2H-5ZT-1" value="+ edad: Integer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="8RfrB9Oa0-xRCQ15_VHS-16">
+                    <mxGeometry y="52" width="202.5" height="26" as="geometry"/>
+                </mxCell>
                 <mxCell id="8RfrB9Oa0-xRCQ15_VHS-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="8RfrB9Oa0-xRCQ15_VHS-16" vertex="1">
-                    <mxGeometry y="52" width="202.5" height="8" as="geometry"/>
+                    <mxGeometry y="78" width="202.5" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="8RfrB9Oa0-xRCQ15_VHS-19" value="+ setName(name:String):void&#10;&#10;+ getName():String&#10;&#10;+ login():Boolean&#10;&#10;+ createDino():void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="8RfrB9Oa0-xRCQ15_VHS-16" vertex="1">
-                    <mxGeometry y="60" width="202.5" height="121" as="geometry"/>
+                    <mxGeometry y="86" width="202.5" height="121" as="geometry"/>
                 </mxCell>
                 <mxCell id="8RfrB9Oa0-xRCQ15_VHS-20" value="Diagrama de clase" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="55.5" y="353" width="118" height="26" as="geometry"/>
