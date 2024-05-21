@@ -16,3 +16,23 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+
+# Clase 21 de mayo del 2024
+
+## Constructor
+
+- El constructor tiene el mismo nombre de la clase
+- Es un metodo. 
+- Puede estar en publico o privado.
+- Siempre estara por defecto a menos que se lo defina.
+- Me sirven para inicializar las propiedades. 
+- Se llaman automaticamente una sola vez.
+- Se ejecuta automaticamente.
+
+## Sobrecarga
+
+La particularidad de poder jugar con un conjunto de parametros.
+ public Perro() = sin parametros
+ public Perro(String nombre) = con un parametro
+ public Pero (String nombre, String raza) = con dos parametros=sobrecarga
