@@ -3,7 +3,7 @@ public class Cliente {
     private Float dinero;
 
     public Cliente() {
-        dinero = 0;
+        dinero = (float) 0;
     }
 
     public Cliente(Float dinero) {
@@ -17,9 +17,9 @@ public class Cliente {
 
     public void setDinero(Float dinero) {
         if (dinero == null)
-            this.dinero = 0;
+            this.dinero = (float) 0;
         else
-            this.dinero = dinero;
+            this.dinero = dinero.floatValue();
     }
 
     // public void seleccionarProductoPerchero(){

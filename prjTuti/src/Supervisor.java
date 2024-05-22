@@ -16,7 +16,7 @@ public class Supervisor extends Cajero{
 
     public void setLlaveAutorizacion(String llaveAutorizacion) {
         if (llaveAutorizacion != null) {
-            this.llaveAutorizacion = llaveAutorizacion;
+            this.llaveAutorizacion = llaveAutorizacion.toUpperCase();
         } else {
             this.llaveAutorizacion = "";
         }

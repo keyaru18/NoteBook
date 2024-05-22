@@ -19,7 +19,7 @@ public class Cajero extends Persona{
     }
     public void setUsuario(String usuario) {
         if (usuario != null) {
-            this.usuario = usuario;
+            this.usuario = usuario.toUpperCase();
         } else {
             this.usuario = "";
         }
@@ -29,7 +29,7 @@ public class Cajero extends Persona{
     }
     public void setClave(String clave) {
         if (clave != null) {
-            this.clave = clave;
+            this.clave = clave.toUpperCase();
         } else {
             this.clave = "";
         }
