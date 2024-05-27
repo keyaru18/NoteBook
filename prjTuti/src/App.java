@@ -5,9 +5,19 @@ public class App {
     public static Scanner sc   = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         //argumentoMain(args);
-        flujoTeclado();
-        flujoTeclado();
+        //flujoTeclado();
+        //flujoTeclado();
         //flujoString();
+
+        // int total =0; // Nombrar como flujoDato
+        // String numeros ="12,343,65,767,676";
+        // Scanner scan = new Scanner(numeros);
+        // scan.useDelimiter(",");
+        // while(scan.hasNext()){
+        //         total += scan.nextInt();
+        // }
+        // System.out.println("Total es: "+ total);
+        // scan.close();
 
         Persona oP = new Persona();
         Persona oP2 = new Persona(null, null, null);
