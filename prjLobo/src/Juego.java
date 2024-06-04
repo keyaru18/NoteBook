@@ -22,12 +22,12 @@ public void jugarLobito(){
     do {
         short opcMenu=mostrarMenu();
         String individuo = " ";
-        individuo = (vikingoEstadoIzq)
-                    ? ladoIzq[opcMenu] 
-                    : ladoDer[opcMenu];
+
         if (vikingoEstadoIzq) {
+            individuo=ladoIzq[opcMenu];
             ladoIzq[opcMenu]=" ";
         } else {
+            individuo=ladoDer[opcMenu];
             ladoDer[opcMenu]=" ";
         }
         moverBarca(individuo);
@@ -35,7 +35,7 @@ public void jugarLobito(){
 
         if (vikingoEstadoIzq) {
             ladoIzq[opcMenu]=individuo;
-            setBarcaRio(1, " ");
+            setBarcaRio(1, individuo);
         } else {
             ladoDer[opcMenu]=individuo;
             setBarcaRio(rio.length(), " ");
@@ -49,7 +49,7 @@ public void jugarLobito(){
     private short mostrarMenu(){
         int opc=-1;
         System.out.println(" ".repeat(10)+barca+rio);
-        System.out.println( "\n 0 Vikingo va solo " 
+        System.out.print( "\n 0 Vikingo va solo " 
                         + "\n 1 Lobo             " 
                         + "\n 2 Caperucita        " 
                         + "\n 3 Uvas             " 
@@ -58,8 +58,19 @@ public void jugarLobito(){
         do{
             try{
                 opc=-1;
+                String personaje = "";
                 System.out.print("\n[+] Ingrese una opc: ");
                 opc = App.sc.nextInt();
+                //verificar que exista un personaje
+                personaje = (vikingoEstadoIzq)
+                            ?ladoIzq[opc]
+                            :ladoDer[opc];
+
+                if (personaje.trim().isEmpty()){
+                opc=-1;
+                System.out.println("No existe ese personaje en el aldo que esta en la barca");
+                }
+                
                 if (opc ==4) {
                     System.out.println("Te vere pronto ... cobarde..!");
                     System.exit(0);
