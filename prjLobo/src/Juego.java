@@ -9,113 +9,142 @@ public class Juego {
     private String rio;
 
     public Juego() {
-        this.usuario    = new Jugador();
+        this.usuario = new Jugador();
 
-        this.rio        = ".".repeat(20);
+        this.rio = ".".repeat(20);
         this.barca = "\\_V_,_?_/";
-        this.ladoIzq    = new String[] { "V", "L", "C", "U" }; // Personajes del juego: vikingo, lobo, caperucita y uvas
-        this.ladoDer    = new String[] { "", "", "", "" };
+        this.ladoIzq = new String[] { "V", "L", "C", "U" }; // Personajes del juego: vikingo, lobo, caperucita y uvas
+        this.ladoDer = new String[] { "", "", "", "" };
         this.vikingoEstadoIzq = true;
     }
-// jugarLobito
-public void jugarLobito(){
-    do {
-        short opcMenu=mostrarMenu();
-        String individuo = " ";
 
+    // jugarLobito
+    public void jugarLobito() {
+        do {
+            short opcMenu = mostrarMenu();
+            String individuo = " ";
+
+            if (vikingoEstadoIzq) {
+                individuo = ladoIzq[opcMenu];
+                ladoIzq[opcMenu] = " ";
+            } else {
+                individuo = ladoDer[opcMenu];
+                ladoDer[opcMenu] = " ";
+            }
+            moverBarca(individuo);
+            vikingoEstadoIzq = !vikingoEstadoIzq;
+
+            if (vikingoEstadoIzq) {
+                ladoIzq[opcMenu] = individuo;
+                setBarcaRio(1, individuo);
+            } else {
+                ladoDer[opcMenu] = individuo;
+                setBarcaRio(rio.length(), " ");
+            }
+            verificarReglas();
+        } while (true);
+
+    }
+
+    // verificarRegla
+    private String verificarReglas() {
+        String msg = "";
+
+        // Reglas con las que se priede el juego
         if (vikingoEstadoIzq) {
-            individuo=ladoIzq[opcMenu];
-            ladoIzq[opcMenu]=" ";
+            // lobo come caperucita
+            if (ladoDer[1].equals("L") && ladoDer[2].equals("C"))
+                msg += "LE DEJARON 7-0 A LA CAPERUCITA";
+            // cAPERUCITA COME UVAS
+            if (ladoDer[2].equals("C") && ladoDer[3].equals("U"))
+                msg += "LA CAPERUCITA SE COMIO LAS UVAS";
         } else {
-            individuo=ladoDer[opcMenu];
-            ladoDer[opcMenu]=" ";
+            // lobo come caperucita
+            if (ladoIzq[1].equals("L") && ladoIzq[2].equals("C"))
+                msg += "EL LOBO LE DEJO 7-0 A LA CAPERUCITA";
+            // cAPERUCITA COME UVAS
+            if (ladoIzq[2].equals("C") && ladoIzq[3].equals("U"))
+                msg += "LA CAPERUCITA SE COMIO LAS UVAS";
         }
-        moverBarca(individuo);
-        vikingoEstadoIzq=!vikingoEstadoIzq;
-
-        if (vikingoEstadoIzq) {
-            ladoIzq[opcMenu]=individuo;
-            setBarcaRio(1, individuo);
-        } else {
-            ladoDer[opcMenu]=individuo;
-            setBarcaRio(rio.length(), " ");
+        // Reglas con la que gano el juego
+        if (ladoDer[0].equals("V") && ladoDer[1].equals("L") && ladoDer[2].equals("C") && ladoDer[3].equals("U"))
+            msg = "LO LOGRASTE CRACK!!";
+        if (!msg.isEmpty()) {
+            System.out.println("\n\n"+msg);
+            System.exit(0);
         }
-        
-    } while (true);
+        return "";
+    }
 
-   
-}
+    private short mostrarMenu() {
+        int opc = -1;
+        System.out.println(" ".repeat(10) + barca + rio);
+        System.out.print("\n 0 Vikingo va solo "
+                + "\n 1 Lobo             "
+                + "\n 2 Caperucita        "
+                + "\n 3 Uvas             "
+                + "\n 4 Salir            ");
 
-    private short mostrarMenu(){
-        int opc=-1;
-        System.out.println(" ".repeat(10)+barca+rio);
-        System.out.print( "\n 0 Vikingo va solo " 
-                        + "\n 1 Lobo             " 
-                        + "\n 2 Caperucita        " 
-                        + "\n 3 Uvas             " 
-                        + "\n 4 Salir            ");
-        
-        do{
-            try{
-                opc=-1;
+        do {
+            try {
+                opc = -1;
                 String personaje = "";
                 System.out.print("\n[+] Ingrese una opc: ");
                 opc = App.sc.nextInt();
-                //verificar que exista un personaje
+                // verificar que exista un personaje
                 personaje = (vikingoEstadoIzq)
-                            ?ladoIzq[opc]
-                            :ladoDer[opc];
+                        ? ladoIzq[opc]
+                        : ladoDer[opc];
 
-                if (personaje.trim().isEmpty()){
-                opc=-1;
-                System.out.println("No existe ese personaje en el aldo que esta en la barca");
+                if (personaje.trim().isEmpty() && opc > 0) {
+                    opc = -1;
+                    System.out.println("No existe ese personaje en el aldo que esta en la barca");
                 }
-                
-                if (opc ==4) {
+
+                if (opc == 4) {
                     System.out.println("Te vere pronto ... cobarde..!");
                     System.exit(0);
                 }
-            }catch (Exception e){App.sc.next();}
-        }
-        while (opc>=4 || opc<0);
-        //opc 0,1,2,3
+            } catch (Exception e) {
+                App.sc.next();
+            }
+        } while (opc >= 4 || opc < 0);
+        // opc 0,1,2,3
         String individuo = "";
-        individuo   = (vikingoEstadoIzq)
-                    ?ladoIzq[opc]
-                    :ladoDer[opc];
+        individuo = (vikingoEstadoIzq)
+                ? ladoIzq[opc]
+                : ladoDer[opc];
         moverBarca(individuo);
-        vikingoEstadoIzq=!vikingoEstadoIzq;
-        
+        vikingoEstadoIzq = !vikingoEstadoIzq;
+
         return (short) opc;
     }
 
-    private void moverBarca(String individuo){
-        //barca = "\\_V_,_?_/";
-        
-        if(vikingoEstadoIzq)
-            for(int i = 0; i<rio.length(); i++)
-                setBarcaRio(i,individuo);
-        else    
-            for (int i = rio.length()-1; i>=0;i--)
-                setBarcaRio(i,individuo);
+    private void moverBarca(String individuo) {
+        // barca = "\\_V_,_?_/";
+
+        if (vikingoEstadoIzq)
+            for (int i = 0; i < rio.length(); i++)
+                setBarcaRio(i, individuo);
+        else
+            for (int i = rio.length() - 1; i >= 0; i--)
+                setBarcaRio(i, individuo);
     }
-    private void setBarcaRio(int posicionBarca, String individuo){
-        //barca = "\\_V_,_?_/";
+
+    private void setBarcaRio(int posicionBarca, String individuo) {
+        // barca = "\\_V_,_?_/";
         String personajeIzq = Arrays.toString(ladoIzq);
         String personajeDer = Arrays.toString(ladoDer);
-        String rioBarca =   "\r"
-                            +personajeIzq
-                            +".".repeat(posicionBarca)
-                            +barca.replace("?", individuo)
-                            +".".repeat(rio.length()-posicionBarca)
-                            +personajeDer;
+        String rioBarca = "\r"
+                + personajeIzq
+                + ".".repeat(posicionBarca)
+                + barca.replace("?", individuo)
+                + ".".repeat(rio.length() - posicionBarca)
+                + personajeDer;
         System.out.print(rioBarca);
-        try{
+        try {
             Thread.sleep(100);
-        }catch(InterruptedException e){}
+        } catch (InterruptedException e) {
+        }
     }
 }
-
-// verificarRegla
-
-
