@@ -7,23 +7,34 @@ public class Juego {
     private String rio;
 
     public Juego() {
-        this.usuario = new Jugador();
-        this.rio = "-".repeat(20);
-        this.barca = "\\_V_;_?_//";
-        this.vikingoEstadoIzq = true;
-        this.ladoIzq = new String[] { "V", "L", "C", "U" }; // Personajes del juego: vikingo, lobo, caperucita y uvas
-        this.ladoDer = new String[] { "", "", "", "" };
-    }
+        this.usuario    = new Jugador();
 
-    int opc=-1;
-    public short mostrarMenu(){
+        this.rio        = ".".repeat(20);
+        this.barca = "\\_V_,_?_/";
+        this.ladoIzq    = new String[] { "V", "L", "C", "U" }; // Personajes del juego: vikingo, lobo, caperucita y uvas
+        this.ladoDer    = new String[] { "", "", "", "" };
+        this.vikingoEstadoIzq = true;
+    }
+// jugarLobito
+public boolean jugarLobito(){
+    while(mostrarMenu());
+
+    return true;
+}
+
+    private boolean mostrarMenu(){
+        int opc=-1;
         System.out.println(" ".repeat(10)+barca+rio);
-        System.out.print("\n 0 Vikingo va solo"+ "\n 1 Lobo" + "\n2 Caperucita" + "\n 3 Uvas" + "\n 4 Salir");
+        System.out.println( "\n 0 Vikingo va solo " 
+                        + "\n 1 Lobo             " 
+                        + "\n 2 Caperucita        " 
+                        + "\n 3 Uvas             " 
+                        + "\n 4 Salir            ");
         
         do{
             try{
                 opc=-1;
-                System.out.println("\n [+] Ingrese una opc: ");
+                System.out.print("\n[+] Ingrese una opc: ");
                 opc = App.sc.nextInt();
                 if (opc ==4) {
                     System.out.println("Te vere pronto ... cobarde..!");
@@ -32,11 +43,39 @@ public class Juego {
             }catch (Exception e){App.sc.next();}
         }
         while (opc>=4 || opc<0);
-        return (short) opc;
+        //opc 0,1,2,3
+        String individuo = "";
+        individuo   = (vikingoEstadoIzq)
+                    ?ladoIzq[opc]
+                    :ladoDer[opc];
+        moverBarca(individuo);
+        vikingoEstadoIzq=!vikingoEstadoIzq;
+        return true;
+    }
+
+    private void moverBarca(String individuo){
+        //barca = "\\_V_,_?_/";
+        
+        if(vikingoEstadoIzq)
+            for(int i = 0; i<rio.length(); i++)
+                setBarcaRio(i,individuo);
+        else    
+            for (int i = rio.length()-1; i>=0;i--)
+                setBarcaRio(i,individuo);
+    }
+    private void setBarcaRio(int posicionBarca, String individuo){
+        //barca = "\\_V_,_?_/";
+        String rioBarca =   "\r"
+                            +".".repeat(posicionBarca)
+                            +barca.replace("?", individuo)
+                            +".".repeat(rio.length()-posicionBarca);
+        System.out.print(rioBarca);
+        try{
+            Thread.sleep(100);
+        }catch(InterruptedException e){}
     }
 }
 
 // verificarRegla
-// jugarLobito
 
 

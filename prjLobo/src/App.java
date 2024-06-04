@@ -5,9 +5,8 @@ public class App {
     public static Juego juego;
     
     public static void main(String[] args) throws Exception {
-       Juego juego = new Juego();
-       Jugador jugador = new Jugador();
-       juego.mostrarMenu();
-
+        juego = new Juego(); 
+        juego.jugarLobito();
+        //juego.moverBarca();
     }
 }
