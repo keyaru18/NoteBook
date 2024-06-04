@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Juego {
-    Jugador usuario;
+    public Jugador usuario;
     private String[] ladoIzq;
     private String[] ladoDer;
     private boolean vikingoEstadoIzq;
@@ -20,6 +20,9 @@ public class Juego {
 
     // jugarLobito
     public void jugarLobito() {
+        System.out.println("Bienvenido al juego de 'El lobo y el Vikingo'");
+        if(!usuario.login())
+            System.exit(0);
         do {
             short opcMenu = mostrarMenu();
             String individuo = " ";
@@ -36,61 +39,61 @@ public class Juego {
 
             if (vikingoEstadoIzq) {
                 ladoIzq[opcMenu] = individuo;
-                setBarcaRio(1, individuo);
+                setBarcaRio(1, " ");
             } else {
                 ladoDer[opcMenu] = individuo;
                 setBarcaRio(rio.length(), " ");
             }
             verificarReglas();
         } while (true);
-
     }
 
     // verificarRegla
-    private String verificarReglas() {
+    private void verificarReglas() {
         String msg = "";
 
         // Reglas con las que se priede el juego
         if (vikingoEstadoIzq) {
-            // lobo come caperucita
+            //R1: lobo come caperucita
             if (ladoDer[1].equals("L") && ladoDer[2].equals("C"))
-                msg += "LE DEJARON 7-0 A LA CAPERUCITA";
-            // cAPERUCITA COME UVAS
+                msg += "\n 7EL LOBO LE DEJO 7-0 A LA CAPERUCITA";
+            //R2: CAPERUCITA COME UVAS
             if (ladoDer[2].equals("C") && ladoDer[3].equals("U"))
-                msg += "LA CAPERUCITA SE COMIO LAS UVAS";
+                msg += "\n LA CAPERUCITA SE COMIO LAS UVAS";
         } else {
             // lobo come caperucita
             if (ladoIzq[1].equals("L") && ladoIzq[2].equals("C"))
-                msg += "EL LOBO LE DEJO 7-0 A LA CAPERUCITA";
+                msg += "\n EL LOBO LE DEJO 7-0 A LA CAPERUCITA";
             // cAPERUCITA COME UVAS
             if (ladoIzq[2].equals("C") && ladoIzq[3].equals("U"))
-                msg += "LA CAPERUCITA SE COMIO LAS UVAS";
+                msg += "\n LA CAPERUCITA SE COMIO LAS UVAS";
         }
         // Reglas con la que gano el juego
-        if (ladoDer[0].equals("V") && ladoDer[1].equals("L") && ladoDer[2].equals("C") && ladoDer[3].equals("U"))
-            msg = "LO LOGRASTE CRACK!!";
+        if (ladoDer[1].equals("L") && ladoDer[2].equals("C") && ladoDer[3].equals("U"))
+            msg = "\n LO LOGRASTE CRACK!!";
         if (!msg.isEmpty()) {
-            System.out.println("\n\n"+msg);
+            System.out.println(msg);
             System.exit(0);
         }
-        return "";
     }
 
     private short mostrarMenu() {
         int opc = -1;
-        System.out.println(" ".repeat(10) + barca + rio);
         System.out.print("\n 0 Vikingo va solo "
                 + "\n 1 Lobo             "
                 + "\n 2 Caperucita        "
                 + "\n 3 Uvas             "
                 + "\n 4 Salir            ");
-
         do {
             try {
-                opc = -1;
                 String personaje = "";
                 System.out.print("\n[+] Ingrese una opc: ");
                 opc = App.sc.nextInt();
+                if(opc==4){
+                    System.out.println("Se te moja la canoa... cierto?");
+                    System.exit(0);
+                }
+
                 // verificar que exista un personaje
                 personaje = (vikingoEstadoIzq)
                         ? ladoIzq[opc]
@@ -98,36 +101,20 @@ public class Juego {
 
                 if (personaje.trim().isEmpty() && opc > 0) {
                     opc = -1;
-                    System.out.println("No existe ese personaje en el aldo que esta en la barca");
+                    System.out.println("No existe ese personaje en el lado que esta la barca");
                 }
-
-                if (opc == 4) {
-                    System.out.println("Te vere pronto ... cobarde..!");
-                    System.exit(0);
-                }
-            } catch (Exception e) {
-                App.sc.next();
-            }
-        } while (opc >= 4 || opc < 0);
-        // opc 0,1,2,3
-        String individuo = "";
-        individuo = (vikingoEstadoIzq)
-                ? ladoIzq[opc]
-                : ladoDer[opc];
-        moverBarca(individuo);
-        vikingoEstadoIzq = !vikingoEstadoIzq;
-
+            } catch (Exception e) {App.sc.next();}
+        } 
+        while (opc >= 4 || opc < 0);
         return (short) opc;
     }
 
     private void moverBarca(String individuo) {
-        // barca = "\\_V_,_?_/";
-
         if (vikingoEstadoIzq)
             for (int i = 0; i < rio.length(); i++)
                 setBarcaRio(i, individuo);
         else
-            for (int i = rio.length() - 1; i >= 0; i--)
+            for (int i = rio.length(); i >= 0; i--)
                 setBarcaRio(i, individuo);
     }
 

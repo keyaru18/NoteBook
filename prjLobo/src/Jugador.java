@@ -5,7 +5,7 @@ public class Jugador {
     private String clave;
 
     public Jugador(){
-        setUsuario("200402");
+        setUsuario("Keyaru");
         setNombre("Keyaru");
         setClave("Shinigami20o4");
     }
