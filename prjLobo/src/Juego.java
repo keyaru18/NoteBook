@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Juego {
     Jugador usuario;
     private String[] ladoIzq;
@@ -16,13 +18,35 @@ public class Juego {
         this.vikingoEstadoIzq = true;
     }
 // jugarLobito
-public boolean jugarLobito(){
-    while(mostrarMenu());
+public void jugarLobito(){
+    do {
+        short opcMenu=mostrarMenu();
+        String individuo = " ";
+        individuo = (vikingoEstadoIzq)
+                    ? ladoIzq[opcMenu] 
+                    : ladoDer[opcMenu];
+        if (vikingoEstadoIzq) {
+            ladoIzq[opcMenu]=" ";
+        } else {
+            ladoDer[opcMenu]=" ";
+        }
+        moverBarca(individuo);
+        vikingoEstadoIzq=!vikingoEstadoIzq;
 
-    return true;
+        if (vikingoEstadoIzq) {
+            ladoIzq[opcMenu]=individuo;
+            setBarcaRio(1, " ");
+        } else {
+            ladoDer[opcMenu]=individuo;
+            setBarcaRio(rio.length(), " ");
+        }
+        
+    } while (true);
+
+   
 }
 
-    private boolean mostrarMenu(){
+    private short mostrarMenu(){
         int opc=-1;
         System.out.println(" ".repeat(10)+barca+rio);
         System.out.println( "\n 0 Vikingo va solo " 
@@ -50,7 +74,8 @@ public boolean jugarLobito(){
                     :ladoDer[opc];
         moverBarca(individuo);
         vikingoEstadoIzq=!vikingoEstadoIzq;
-        return true;
+        
+        return (short) opc;
     }
 
     private void moverBarca(String individuo){
@@ -65,10 +90,14 @@ public boolean jugarLobito(){
     }
     private void setBarcaRio(int posicionBarca, String individuo){
         //barca = "\\_V_,_?_/";
+        String personajeIzq = Arrays.toString(ladoIzq);
+        String personajeDer = Arrays.toString(ladoDer);
         String rioBarca =   "\r"
+                            +personajeIzq
                             +".".repeat(posicionBarca)
                             +barca.replace("?", individuo)
-                            +".".repeat(rio.length()-posicionBarca);
+                            +".".repeat(rio.length()-posicionBarca)
+                            +personajeDer;
         System.out.print(rioBarca);
         try{
             Thread.sleep(100);
