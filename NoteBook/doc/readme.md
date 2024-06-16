@@ -1,3 +1,8 @@
+\*
+*@autor: Richard.Tipantiza
+*@email: richard.tipantiza@epn.edu.ec
+*version 1.0
+*/
 # Class02 : 30 de Abrl
 
 ## Comando de Linux
