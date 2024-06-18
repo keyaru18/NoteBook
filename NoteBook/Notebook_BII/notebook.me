@@ -1,0 +1,28 @@
+# Clase1: 18 de Junio
+## Realizacion
+las interfaces se los conoce como realizacion, implementacion, contratacion
+pueden pasar informacion a otros
+todo metodo es abstarcto y publico
+no tienen constructor
+solo admite campos/propiedades de tipo "public static final"
+obligar a que alguien haga una accion
+## Asociacion
+a diferencia de una herencia o interfaz solo es un grado de comunicacion entre dos objetos cualquiera
+se pasan informacion, conversan
+la comunicacion es bidireccional si no tiene flecha
+si tiene flecha es unidireccional
+1 excatamente 1
+0.. 1 zero o 1
+* zero o mas
+1.. * 1 o mas
+(ordered) ordered 
+utilizar cuando en la asociacion aparace "*"
+```java
+    public java.util.List<"Nombre de clase"> "nombre de variable" = new ArrayList<"Nombre de clase">();
+```
+Si la decision de implementacion pone java.util.Collection, ahi q tener cuidado y no es recomendable
+## Multiplicidad/Cardinalidad
+pude haber una linea de asosiacion o dos
+un objeto que se asocia consigo mismo
+por cada linea de asociacion tiene que verse en una linea de codigo
+si en la linea de asociacion tiene un numero o caracter eso quiere decir que debemos poner en una linea de cdigo a la variable como una lista
