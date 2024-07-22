@@ -10,6 +10,22 @@ INSERT INTO PersonaTipo
 ('Instructor Udemy')
 ,('Estudiante');
 
+INSERT INTO Idioma
+(Idioma) VALUES
+('English')
+,('Desutsch')
+,('Español')
+,('Frances')
+,('Bahasa Indonesia')
+,('Italiano')
+,('Nederlands')
+,('Polski')
+,('Portugues')
+,('Romano')
+,('Turco');
+
+SELECT * FROM Idioma;
+
 INSERT INTO Persona
 (IdPersonaTipo, Nombre1, Nombre2, Apellido1, Apellido2, FechaNacimiento, Estatura, Cedula, FechaModifica, IdUsuarioModifica ) VALUES
 ('2', 'Maria', 'Elena', 'Sanchez', 'Delatorre', '2000-02-02', '1.58', '1754934012', '2024-07-21','1' )
@@ -49,11 +65,11 @@ INSERT INTO CursoCategoria
 ,('Enseñanzas y disciplinas academicas');
 
 INSERT INTO Curso
-(IdPersonaCreadorCurso, IdCursoCategoria, Nombre, PrecioVenta, FechaModifica) VALUES
-('2', '9', 'Curso de Automaquillaje completo (Mitocadoryyo)', '44.99', '2017-06')
-,('3', '7', 'Creacion de modelos 3D pintados a mano para videojuegos', '19.99', '2017-01')
-,('5', '7', 'Como proyectar y construir chimeneas a leña', '64.99', '2014-07')
-,('5', '12', 'Aprende a tocar guitarra RAPIDO y FACIL con Guitarsimple', '39.99', '2014-02');
+(IdPersonaCreadorCurso, IdCursoCategoria, IdIdioma, Nombre, PrecioVenta, FechaModifica) VALUES
+('2', '9', '4', 'Curso de Automaquillaje completo (Mitocadoryyo)', '44.99', '2017-06')
+,('3', '7', '3', 'Creacion de modelos 3D pintados a mano para videojuegos', '19.99', '2017-01')
+,('5', '7', '9', 'Como proyectar y construir chimeneas a leña', '64.99', '2014-07')
+,('5', '12', '1', 'Aprende a tocar guitarra RAPIDO y FACIL con Guitarsimple', '39.99', '2014-02');
 
 INSERT INTO CursoAlumno
 (IdPersonaAlumno, IdCurso) VALUES

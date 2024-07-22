@@ -5,19 +5,26 @@ autor: Tipantiza Richard
 fecha: 2024-07-21
 Description: Sistema de educacion (udemy)
 */
-DROP TABLE IF EXISTS PersonaTipo;
-DROP TABLE IF EXISTS Persona;
-DROP TABLE IF EXISTS PersonaUsuario;
+DROP TABLE IF EXISTS Idioma;
 DROP TABLE IF EXISTS CursoAlumno;
-DROP TABLE IF EXISTS Curso;
-DROP TABLE IF EXISTS CursoCategoria;
+DROP TABLE IF EXISTS PersonaUsuario;
 DROP TABLE IF EXISTS CursoPago;
+DROP TABLE IF EXISTS Curso;
 DROP TABLE IF EXISTS FormaPago;
+DROP TABLE IF EXISTS CursoCategoria;
+DROP TABLE IF EXISTS Persona;
+DROP TABLE IF EXISTS PersonaTipo;
 
 CREATE TABLE PersonaTipo (
     IdPersonaTipo   INTEGER PRIMARY KEY AUTOINCREMENT
     ,Nombre         TEXT NOT NULL UNIQUE
     ,Estado         VARCHAR(1) DEFAULT('A') CHECK (Estado  IN ('A','X'))
+    ,FechaRegistro  DATETIME DEFAULT (datetime('now', 'localtime'))
+);
+
+CREATE TABLE Idioma (
+    IdIdioma        INTEGER PRIMARY KEY AUTOINCREMENT
+    ,Idioma         VARCHAR (20) NOT NULL UNIQUE
     ,FechaRegistro  DATETIME DEFAULT (datetime('now', 'localtime'))
 );
 
@@ -62,6 +69,7 @@ CREATE TABLE Curso (
     IdCurso                 INTEGER PRIMARY KEY AUTOINCREMENT
     ,IdPersonaCreadorCurso  INTEGER NOT NULL REFERENCES Persona(IdPersona)
     ,IdCursoCategoria       INTEGER NOT NULL REFERENCES CursoCategoria(IdCursoCategoria)
+    ,IdIdioma                 INTEGER NOT NULL REFERENCES Idioma(IdIdioma)
     ,Nombre                 VARCHAR (300) NOT NULL UNIQUE
     ,PrecioVenta            FLOAT NOT NULL UNIQUE
     ,FechaRegistro          DATETIME DEFAULT (datetime('now', 'localtime'))
