@@ -15,15 +15,3 @@ public abstract class SQliteDataHelper {
                 conn = DriverManager.getConnection(DBPathConnection);
         }cath (SQLException e) {
             throw e ;
-        }
-        return conn;
-    }
-    protected static void closeConnection() throws Exception{
-        try {
-            if (conn != null)
-                conn.close();
-        }cath (Exception e) {
-            throw e;       
-        }
-    }
-}
