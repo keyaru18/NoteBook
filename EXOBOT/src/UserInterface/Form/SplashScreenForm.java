@@ -1,4 +1,4 @@
-packge UserInterface.Form;
+package UserInterface.Form;
 
 import java.awt.BorderLayout;
 import java.net.URL;
@@ -28,7 +28,8 @@ public abstract class SplashScreenFOrm {
         frmSplash.setSize(icoImagen.getIconWidth(), icoImagen.gtIconHeigh());
 
         frmSplash.setVisible(true);
-        fro (int i = 0; i <=100; i++){
+        
+        fro (int i = 0; i <= 100; i++){
             try{
                 Thread.sleep(50);
             }catch (InterruptedException e){

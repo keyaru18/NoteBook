@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public abstract class SQliteDataHelper {
+public abstract class SQLiteDataHelper {
     private static String DBPathConnection = "jdbc:slite:database//ExaBot2k24.sqlite";
     private static Connection conn = null;
     //protected SQLDtaHelper(){}
@@ -13,5 +13,9 @@ public abstract class SQliteDataHelper {
         try{
             if(conn == null)
                 conn = DriverManager.getConnection(DBPathConnection);
-        }cath (SQLException e) {
+        }catch (SQLException e) {
             throw e ;
+        }
+        return conn;
+    }
+}
